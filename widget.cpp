@@ -1,4 +1,5 @@
 #include "widget.h"
+#include <QDebug>
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent)
@@ -7,7 +8,9 @@ Widget::Widget(QWidget *parent) :
     ficheroOrigen="";
     ficheroDestino="";
     botonEscribir->setEnabled(false);
-
+    m_lista_extensiones.insert(tr("All Files (*.*)"),".*");
+    m_lista_extensiones.insert(tr("CSV Files (*.csv)"),".csv");
+    m_lista_extensiones.insert(tr("Text Files (*.txt)"),".txt");
 }
 
 void Widget::AbrirOrigen()
@@ -27,18 +30,35 @@ void Widget::AbrirOrigen()
             botonEscribir->setEnabled(true);
         }
     }
-    LabelStatus->setText("");//reseteo el mensaje de abajo    
+    LabelStatus->setText("");//reseteo el mensaje de abajo
 }
 
 void Widget::AbrirDestino()
 {
     QString selectedFilter;
+    QHashIterator<QString, QString> i(m_lista_extensiones);
+    QString extensiones;
+    while (i.hasNext())
+    {
+        i.next();
+        extensiones += i.key();
+        if (i.hasNext())
+            extensiones += ";;";
+    }
+    QString extension;
     ficheroDestino = QFileDialog::getSaveFileName(this,
-                                                  "getSaveFileName",
+                                                  tr("Guardar archivo"),
                                                   "",
-                                                  "All Files (*);;Text Files (*.txt)",
-                                                  &selectedFilter
+                                                  extensiones,
+                                                  &extension,
+                                                  QFileDialog::DontUseNativeDialog
                                                   );
+
+#if not defined(Q_OS_WIN) || not defined(Q_OS_MAC)
+    ficheroDestino += m_lista_extensiones[extension];
+#endif
+
+    qDebug()<<"filtro "<<selectedFilter;
     if (!ficheroDestino.isEmpty())
     {
         LabelFicheroDestino->setText(ficheroDestino);
@@ -108,8 +128,8 @@ void Widget::GenerarRegistro(int mascara[50], QString leyenda[38],char tipo[2])
                 QString registro;
                 bool grabar=true;
                 for (int i=0; i<tam[0]; i++)
-                {                   
-                   if (mascara[i]<0)
+                {
+                    if (mascara[i]<0)
                     {
                         tamregistro=mascara[i]*-1;//pongo la cantidad en positivo
                         grabar=false;
@@ -131,8 +151,8 @@ void Widget::GenerarRegistro(int mascara[50], QString leyenda[38],char tipo[2])
                 texto<<"\n";
             }
         }
-    LabelStatus->setText(tr("¡¡¡Generado archivo!!!"));
-    }    
+        LabelStatus->setText(tr("¡¡¡Generado archivo!!!"));
+    }
     fEntrada.close();
     fSalida.close();
 }

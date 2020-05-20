@@ -28,6 +28,7 @@ private:
 
     QString ficheroOrigen;
     QString ficheroDestino;
+    QHash<QString, QString> m_lista_extensiones;
     int tam[2];
     char tipo[6][3]={"11","13","14","15","16","17"};
     QString leyendas[6][38]=
