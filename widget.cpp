@@ -131,7 +131,7 @@ void Widget::GenerarRegistro(int mascara[50], QString leyenda[38],char tipo[2])
                 texto<<"\n";
             }
         }
-    LabelStatus->setText("¡¡¡Generado archivo!!!");
+    LabelStatus->setText(tr("¡¡¡Generado archivo!!!"));
     }    
     fEntrada.close();
     fSalida.close();
