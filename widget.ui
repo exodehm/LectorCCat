@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>425</width>
+    <height>140</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>425</width>
+    <height>140</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>425</width>
+    <height>140</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Generador de Registros</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_5">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="botonOrigen">
+         <property name="text">
+          <string>Fichero origen</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="LabelFicheroOrigen">
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="buddy">
+          <cstring>botonOrigen</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <item>
+        <widget class="QPushButton" name="botonDestino">
+         <property name="text">
+          <string>Fichero destino</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="LabelFicheroDestino">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="buddy">
+          <cstring>botonOrigen</cstring>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="letreroListaOpciones">
+         <property name="text">
+          <string>Tipo de registro:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="listaOpciones">
+         <item>
+          <property name="text">
+           <string>Registro de Finca (11)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Registro de unidad constructiva (13)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Registro de construcción (14)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Registro de Bien Inmueble (15)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Registro de Reparto de Elementos Comunes (16)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Registro de Cultivos Agrarios (17)</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4">
+       <item>
+        <widget class="QLabel" name="LabelStatus">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="botonEscribir">
+         <property name="text">
+          <string>Generar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="botonSalir">
+         <property name="text">
+          <string>Salir</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>botonSalir</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>414</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>botonOrigen</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>AbrirOrigen()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>68</x>
+     <y>32</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>108</x>
+     <y>7</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>botonDestino</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>AbrirDestino()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>91</x>
+     <y>55</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>botonEscribir</sender>
+   <signal>clicked()</signal>
+   <receiver>Widget</receiver>
+   <slot>Generar()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>273</x>
+     <y>111</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>224</x>
+     <y>132</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>AbrirOrigen()</slot>
+  <slot>AbrirDestino()</slot>
+  <slot>Generar()</slot>
+ </slots>
+</ui>
